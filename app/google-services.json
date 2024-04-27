@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "880410917328",
+    "project_id": "cryptospy-7f1cc",
+    "storage_bucket": "cryptospy-7f1cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880410917328:android:5fe41e874fa32b1602e1d5",
+        "android_client_info": {
+          "package_name": "com.nafi.cryptospy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy8R5DVnZpXDTDDp1c86n6btfpaatBfpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
