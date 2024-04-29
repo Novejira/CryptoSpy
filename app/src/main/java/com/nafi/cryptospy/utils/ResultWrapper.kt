@@ -1,4 +1,4 @@
-package com.nafi.sfoods.utils
+package com.nafi.sfocryptospyods.utils
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch

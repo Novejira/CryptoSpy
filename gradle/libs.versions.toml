@@ -25,6 +25,7 @@ firebaseCrashlyticsGradle = "2.9.9"
 firebaseAuth = "22.3.1"
 koin = "3.5.6"
 ktlint = "12.1.0"
+legacySupportV4 = "1.0.0"
 
 
 [libraries]
@@ -70,6 +71,7 @@ firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version
 
 # Koin
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
+androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

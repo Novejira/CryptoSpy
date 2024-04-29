@@ -1,4 +1,4 @@
-package com.nafi.sfoods.utils
+package com.nafi.cryptospy.utils
 
 import android.content.Context
 import android.content.SharedPreferences

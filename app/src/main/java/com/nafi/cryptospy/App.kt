@@ -1,4 +1,4 @@
-package com.nafi.sfoods.utils
+package com.nafi.cryptospy
 
 import android.app.Application
 import com.nafi.cryptospy.di.AppModules
