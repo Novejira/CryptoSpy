@@ -1,6 +1,5 @@
 package com.nafi.cryptospy.data.source.firebase
 
-import android.net.Uri
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -22,10 +21,7 @@ interface FirebaseAuthDataSource {
         password: String,
     ): Boolean
 
-    suspend fun updateProfile(
-        fullName: String? = null,
-        photoUri: Uri? = null,
-    ): Boolean
+    suspend fun updateProfile(fullName: String? = null): Boolean
 
     suspend fun updatePassword(newPassword: String): Boolean
 
@@ -65,14 +61,10 @@ class FirebaseAuthDataSourceImpl(private val firebaseAuth: FirebaseAuth) : Fireb
         return registerResult.user != null
     }
 
-    override suspend fun updateProfile(
-        fullName: String?,
-        photoUri: Uri?,
-    ): Boolean {
+    override suspend fun updateProfile(fullName: String?): Boolean {
         getCurrentUser()?.updateProfile(
             userProfileChangeRequest {
                 fullName?.let { displayName = fullName }
-                photoUri?.let { this.photoUri = it }
             },
         )?.await()
         return true

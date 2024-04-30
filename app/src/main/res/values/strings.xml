@@ -6,8 +6,6 @@
     <string name="text_email">Email</string>
     <string name="text_profile">Profile</string>
     <string name="text_input_name">Nope</string>
-    <string name="text_input_username">Nopejiraa</string>
-    <string name="text_input_email">lopeynope@gmail.com</string>
     <string name="text_register">Register</string>
     <string name="hint_name">Your name</string>
     <string name="hint_email">Email</string>
@@ -30,5 +28,9 @@
     <string name="text_desc_regis">Stay alert and wise in the world of Crypto</string>
     <string name="name_app">CryptoSpy</string>
     <string name="desc_app">Welcome to World of Crypto</string>
-
+    <string name="text_edit_profile">Edit Profile</string>
+    <string name="text_save_profile">Save profile</string>
+    <string name="text_change_profile_success">Change profile success!</string>
+    <string name="text_change_profile_failed">Change profile failed</string>
+    <string name="text_want_to_logout">Do you want to logout ?</string>
 </resources>
