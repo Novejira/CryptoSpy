@@ -1,5 +1,6 @@
 package com.nafi.cryptospy.di
 
+import com.google.firebase.auth.FirebaseAuth
 import com.nafi.cryptospy.data.repository.UserRepository
 import com.nafi.cryptospy.data.repository.UserRepositoryImpl
 import com.nafi.cryptospy.data.source.firebase.FirebaseAuthDataSource
@@ -14,6 +15,11 @@ import org.koin.dsl.module
 object AppModules {
     private val networkModule =
         module {
+        }
+
+    private val firebaseModule =
+        module {
+            single<FirebaseAuth> { FirebaseAuth.getInstance() }
         }
 
     private val localModule =
@@ -44,5 +50,5 @@ object AppModules {
             }
         }
 
-    val modules = listOf<Module>(networkModule, localModule, datasource, repository, viewModel)
+    val modules = listOf<Module>(networkModule, firebaseModule, localModule, datasource, repository, viewModel)
 }

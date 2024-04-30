@@ -27,5 +27,8 @@
     <string name="text_change_password">Change Password</string>
     <string name="text_logout">Logout</string>
     <string name="text_already_have_an_account_click_here">Already have an Account ? Login Here</string>
+    <string name="text_desc_regis">Stay alert and wise in the world of Crypto</string>
+    <string name="name_app">CryptoSpy</string>
+    <string name="desc_app">Welcome to World of Crypto</string>
 
 </resources>
