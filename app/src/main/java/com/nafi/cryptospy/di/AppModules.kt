@@ -16,6 +16,15 @@ import com.nafi.cryptospy.presentation.profile.ProfileViewModel
 import com.nafi.cryptospy.presentation.register.RegisterViewModel
 import com.nafi.cryptospy.presentation.splashscreen.SplashViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
+import com.nafi.cryptospy.data.datasource.favorite.FavoriteDataSource
+import com.nafi.cryptospy.data.datasource.favorite.FavoriteDataSourceImpl
+import com.nafi.cryptospy.data.repository.FavoriteRepository
+import com.nafi.cryptospy.data.repository.FavoriteRepositoryImpl
+import com.nafi.cryptospy.data.source.local.AppDatabase
+import com.nafi.cryptospy.data.source.local.dao.FavoriteDao
+import com.nafi.cryptospy.presentation.favorite.FavoriteViewModel
+import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -32,18 +41,22 @@ object AppModules {
 
     private val localModule =
         module {
+            single<AppDatabase> { AppDatabase.getInstance(androidContext()) }
+            single<FavoriteDao> { get<AppDatabase>().FavoriteDao() }
         }
 
     private val datasource =
         module {
             single<FirebaseAuthDataSource> { FirebaseAuthDataSourceImpl(get()) }
             single<DetailDataSource> { DetailApiDataSource(get()) }
+            single<FavoriteDataSource>{ FavoriteDataSourceImpl(get()) }
         }
 
     private val repository =
         module {
             single<UserRepository> { UserRepositoryImpl(get()) }
             single<DetailRepository> { DetailRepositoryImpl(get()) }
+            single<FavoriteRepository> { FavoriteRepositoryImpl(get()) }
         }
 
     private val viewModel =
@@ -66,6 +79,7 @@ object AppModules {
                     detailRepository = get(),
                 )
             }
+            viewModelOf(::FavoriteViewModel)
         }
 
     val modules =

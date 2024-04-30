@@ -2,6 +2,11 @@
     <string name="app_name">CryptoSpy</string>
     <string name="title_tab_home">Home</string>
     <string name="title_tab_profile">Profile</string>
+    <string name="title_tab_favorite">Favorite</string>
+    <string name="text_title_favorite">Favorite</string>
+    <string name="text_coin_symbol">Btc</string>
+    <string name="text_coin_name">Bitcoin</string>
+    <string name="text_delete">Hapus</string>
     <string name="text_username">Username</string>
     <string name="text_email">Email</string>
     <string name="text_profile">Profile</string>
