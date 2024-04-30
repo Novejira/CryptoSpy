@@ -13,6 +13,9 @@ interface FavoriteDao {
     @Query("SELECT * FROM FAVORITE")
     fun getAllFavorite(): Flow<List<FavoriteEntity>>
 
+    @Query("SELECT * FROM FAVORITE WHERE coin_id = :coinId ")
+    fun checkFavoriteById(coinId: String) : Boolean
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addFavorite(favorite: FavoriteEntity): Long
 

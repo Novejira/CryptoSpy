@@ -4,6 +4,7 @@ import com.nafi.cryptospy.data.datasource.favorite.FavoriteDataSource
 import com.nafi.cryptospy.data.mapper.toFavoriteEntity
 import com.nafi.cryptospy.data.mapper.toFavoriteList
 import com.nafi.cryptospy.data.model.Favorite
+import com.nafi.cryptospy.data.source.local.entity.FavoriteEntity
 import com.nafi.sfocryptospyods.utils.ResultWrapper
 import com.nafi.sfocryptospyods.utils.proceed
 import com.nafi.sfocryptospyods.utils.proceedFlow
@@ -14,6 +15,8 @@ import kotlinx.coroutines.flow.onStart
 
 interface FavoriteRepository {
     fun getAllFavorite(): Flow<ResultWrapper<List<Favorite>>>
+
+    fun checkFavoriteById(coinId : String) : Boolean
 
     suspend fun addFavorite(favorite: Favorite): Long
 
@@ -37,6 +40,10 @@ class FavoriteRepositoryImpl(private val datasource: FavoriteDataSource) : Favor
                 emit(ResultWrapper.Loading())
                 delay(2000)
             }
+    }
+
+    override fun checkFavoriteById(coinId: String): Boolean {
+        return datasource.checkFavoriteById(coinId)
     }
 
     override suspend fun addFavorite(favorite: Favorite): Long {

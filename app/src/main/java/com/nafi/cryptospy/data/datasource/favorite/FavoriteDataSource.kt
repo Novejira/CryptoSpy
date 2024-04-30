@@ -8,6 +8,8 @@ interface FavoriteDataSource {
 
     fun getAllFavorite(): Flow<List<FavoriteEntity>>
 
+    fun checkFavoriteById(coinId : String) : Boolean
+
     suspend fun addFavorite(favorite: FavoriteEntity): Long
 
     suspend fun deleteFavorite(favorite: FavoriteEntity): Int
@@ -17,6 +19,8 @@ interface FavoriteDataSource {
 
 class FavoriteDataSourceImpl(private val dao: FavoriteDao) : FavoriteDataSource {
     override fun getAllFavorite(): Flow<List<FavoriteEntity>> = dao.getAllFavorite()
+
+    override fun checkFavoriteById(coinId: String): Boolean = dao.checkFavoriteById(coinId)
 
     override suspend fun addFavorite(favorite: FavoriteEntity): Long = dao.addFavorite(favorite)
 
