@@ -5,5 +5,5 @@ data class Favorite(
     var coinId: String? = null,
     var coinSymbol: String?,
     var coinName: String?,
-    var coinImg: String?,
+    var coinImg: String?
 )
