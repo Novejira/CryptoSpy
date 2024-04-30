@@ -12,11 +12,10 @@ import com.nafi.cryptospy.databinding.ActivityLoginBinding
 import com.nafi.cryptospy.presentation.main.MainActivity
 import com.nafi.cryptospy.presentation.register.RegisterActivity
 import com.nafi.cryptospy.utils.highLightWord
-import com.nafi.sfocryptospyods.utils.proceedWhen
+import com.nafi.cryptospy.utils.proceedWhen
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : AppCompatActivity() {
-
     private val binding: ActivityLoginBinding by lazy {
         ActivityLoginBinding.inflate(layoutInflater)
     }
@@ -101,7 +100,7 @@ class LoginActivity : AppCompatActivity() {
         val password = binding.layoutForm.etPassword.text.toString().trim()
 
         return checkEmailValidation(email) &&
-                checkPasswordValidation(password, binding.layoutForm.tilPassword)
+            checkPasswordValidation(password, binding.layoutForm.tilPassword)
     }
 
     private fun checkEmailValidation(email: String): Boolean {

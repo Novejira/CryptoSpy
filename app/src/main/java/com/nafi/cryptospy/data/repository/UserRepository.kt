@@ -4,8 +4,8 @@ import android.net.Uri
 import com.nafi.cryptospy.data.model.User
 import com.nafi.cryptospy.data.model.toUser
 import com.nafi.cryptospy.data.source.firebase.FirebaseAuthDataSource
-import com.nafi.sfocryptospyods.utils.ResultWrapper
-import com.nafi.sfocryptospyods.utils.proceedFlow
+import com.nafi.cryptospy.utils.ResultWrapper
+import com.nafi.cryptospy.utils.proceedFlow
 import kotlinx.coroutines.flow.Flow
 
 interface UserRepository {

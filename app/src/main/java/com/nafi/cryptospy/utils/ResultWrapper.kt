@@ -1,10 +1,9 @@
-package com.nafi.sfocryptospyods.utils
+package com.nafi.cryptospy.utils
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onStart
-import java.lang.Exception
 
 /**
 Written with love by Muhammad Hermas Yuda Pamungkas

@@ -23,7 +23,6 @@ object AppModules {
     private val datasource =
         module {
             single<FirebaseAuthDataSource> { FirebaseAuthDataSourceImpl(get()) }
-
         }
 
     private val repository =

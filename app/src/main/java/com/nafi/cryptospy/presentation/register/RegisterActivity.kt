@@ -12,11 +12,10 @@ import com.nafi.cryptospy.databinding.ActivityRegisterBinding
 import com.nafi.cryptospy.presentation.login.LoginActivity
 import com.nafi.cryptospy.presentation.main.MainActivity
 import com.nafi.cryptospy.utils.highLightWord
-import com.nafi.sfocryptospyods.utils.proceedWhen
+import com.nafi.cryptospy.utils.proceedWhen
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterActivity : AppCompatActivity() {
-
     private val binding: ActivityRegisterBinding by lazy {
         ActivityRegisterBinding.inflate(layoutInflater)
     }

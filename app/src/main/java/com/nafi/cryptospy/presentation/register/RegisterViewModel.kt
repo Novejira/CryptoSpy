@@ -5,12 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nafi.cryptospy.data.repository.UserRepository
-import com.nafi.sfocryptospyods.utils.ResultWrapper
+import com.nafi.cryptospy.utils.ResultWrapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class RegisterViewModel(private val repository: UserRepository) : ViewModel() {
-
     private val _registerResult = MutableLiveData<ResultWrapper<Boolean>>()
     val registerResult: LiveData<ResultWrapper<Boolean>>
         get() = _registerResult
