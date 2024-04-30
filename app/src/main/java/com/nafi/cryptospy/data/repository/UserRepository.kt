@@ -1,6 +1,5 @@
 package com.nafi.cryptospy.data.repository
 
-import android.net.Uri
 import com.nafi.cryptospy.data.model.User
 import com.nafi.cryptospy.data.model.toUser
 import com.nafi.cryptospy.data.source.firebase.FirebaseAuthDataSource
@@ -26,10 +25,7 @@ interface UserRepository {
 
     fun getCurrentUser(): User?
 
-    suspend fun updateProfile(
-        fullName: String? = null,
-        photoUri: Uri? = null,
-    ): Flow<ResultWrapper<Boolean>>
+    suspend fun updateProfile(fullName: String? = null): Flow<ResultWrapper<Boolean>>
 
     suspend fun updatePassword(newPassword: String): Flow<ResultWrapper<Boolean>>
 
@@ -66,11 +62,8 @@ class UserRepositoryImpl(private val dataSource: FirebaseAuthDataSource) : UserR
         return dataSource.getCurrentUser().toUser()
     }
 
-    override suspend fun updateProfile(
-        fullName: String?,
-        photoUri: Uri?,
-    ): Flow<ResultWrapper<Boolean>> {
-        return proceedFlow { dataSource.updateProfile(fullName, photoUri) }
+    override suspend fun updateProfile(fullName: String?): Flow<ResultWrapper<Boolean>> {
+        return proceedFlow { dataSource.updateProfile(fullName = fullName) }
     }
 
     override suspend fun updatePassword(newPassword: String): Flow<ResultWrapper<Boolean>> {

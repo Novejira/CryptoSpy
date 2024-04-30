@@ -6,6 +6,7 @@ import com.nafi.cryptospy.data.repository.UserRepositoryImpl
 import com.nafi.cryptospy.data.source.firebase.FirebaseAuthDataSource
 import com.nafi.cryptospy.data.source.firebase.FirebaseAuthDataSourceImpl
 import com.nafi.cryptospy.presentation.login.LoginViewModel
+import com.nafi.cryptospy.presentation.profile.ProfileViewModel
 import com.nafi.cryptospy.presentation.register.RegisterViewModel
 import com.nafi.cryptospy.presentation.splashscreen.SplashViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -44,9 +45,11 @@ object AppModules {
             viewModel {
                 RegisterViewModel(get())
             }
-
             viewModel {
                 LoginViewModel(get())
+            }
+            viewModel {
+                ProfileViewModel(get())
             }
         }
 
