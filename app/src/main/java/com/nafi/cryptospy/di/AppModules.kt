@@ -21,7 +21,6 @@ import com.nafi.cryptospy.data.source.local.AppDatabase
 import com.nafi.cryptospy.data.source.local.dao.FavoriteDao
 import com.nafi.cryptospy.data.source.network.service.CryptoSpyApiService
 import com.nafi.cryptospy.presentation.detail.DetailViewModel
-import com.nafi.cryptospy.presentation.home.HomeViewModel
 import com.nafi.cryptospy.presentation.favorite.FavoriteViewModel
 import com.nafi.cryptospy.presentation.login.LoginViewModel
 import com.nafi.cryptospy.presentation.profile.ProfileViewModel
@@ -29,15 +28,6 @@ import com.nafi.cryptospy.presentation.register.RegisterViewModel
 import com.nafi.cryptospy.presentation.splashscreen.SplashViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
-import com.nafi.cryptospy.data.datasource.favorite.FavoriteDataSource
-import com.nafi.cryptospy.data.datasource.favorite.FavoriteDataSourceImpl
-import com.nafi.cryptospy.data.repository.FavoriteRepository
-import com.nafi.cryptospy.data.repository.FavoriteRepositoryImpl
-import com.nafi.cryptospy.data.source.local.AppDatabase
-import com.nafi.cryptospy.data.source.local.dao.FavoriteDao
-import com.nafi.cryptospy.presentation.favorite.FavoriteViewModel
-import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -77,7 +67,6 @@ object AppModules {
 
     private val viewModel =
         module {
-            viewModelOf(::HomeViewModel)
             viewModel {
                 SplashViewModel(get())
             }
@@ -100,7 +89,6 @@ object AppModules {
             viewModel {
                 FavoriteViewModel(get())
             }
-            viewModelOf(::FavoriteViewModel)
         }
 
     val modules =

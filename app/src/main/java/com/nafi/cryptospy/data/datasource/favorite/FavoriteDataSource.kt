@@ -5,7 +5,6 @@ import com.nafi.cryptospy.data.source.local.entity.FavoriteEntity
 import kotlinx.coroutines.flow.Flow
 
 interface FavoriteDataSource {
-
     fun getAllFavorite(): Flow<List<FavoriteEntity>>
 
     fun checkFavoriteById(coinId: String): Flow<List<FavoriteEntity>>
