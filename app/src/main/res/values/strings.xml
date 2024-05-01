@@ -33,4 +33,6 @@
     <string name="text_change_profile_success">Change profile success!</string>
     <string name="text_change_profile_failed">Change profile failed</string>
     <string name="text_want_to_logout">Do you want to logout ?</string>
+    <string name="text_open_in_coingecko">Open In CoinGecko</string>
+    <string name="text_data_empty_or_not_available">data empty or not available</string>
 </resources>
