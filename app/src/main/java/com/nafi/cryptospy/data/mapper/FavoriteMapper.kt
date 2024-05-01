@@ -9,16 +9,16 @@ fun Favorite?.toFavoriteEntity() =
         coinId = this?.coinId,
         coinSymbol = this?.coinSymbol,
         coinName = this?.coinName,
-        coinImg = this?.coinImg
+        coinImg = this?.coinImg,
     )
 
-fun FavoriteEntity?.toFavorite()=
-    Favorite (
+fun FavoriteEntity?.toFavorite() =
+    Favorite(
         id = this?.id,
         coinId = this?.coinId,
         coinSymbol = this?.coinSymbol,
         coinName = this?.coinName,
-        coinImg = this?.coinImg
+        coinImg = this?.coinImg,
     )
 
 fun List<FavoriteEntity>.toFavoriteList() = this.map { it.toFavorite() }

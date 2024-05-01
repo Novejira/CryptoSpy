@@ -3,8 +3,10 @@ package com.nafi.cryptospy.presentation.detail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
 import coil.load
 import com.nafi.cryptospy.R
 import com.nafi.cryptospy.data.model.Detail
@@ -60,6 +62,9 @@ class DetailActivity : AppCompatActivity() {
                     it.payload?.let { data ->
                         bindView(data)
                         setBtnWebClickAction(data.webSlug)
+                        setClickAddFavorite(data, data.id)
+                        checkCoinIsFavorite(data.id)
+                        addToFavorite(data)
                     }
                 },
                 doOnError = {
@@ -86,6 +91,58 @@ class DetailActivity : AppCompatActivity() {
     private fun setClickAction() {
         binding.cardBackArrow.setOnClickListener {
             onBackPressed()
+        }
+    }
+
+    private fun setClickAddFavorite(
+        detail: Detail,
+        coinId: String,
+    ) {
+        binding.layoutDetailHeader.ivFavourite.setOnClickListener {
+            /*if (checkCoinIsFavorite(coinId)) {
+                removeFromFavorite(coinId)
+            } else {
+                addToFavorite(detail)
+            }*/
+        }
+    }
+
+    private fun checkCoinIsFavorite(coinId: String) {
+        viewModel.checkCoinFavorite(coinId).observe(
+            this,
+            Observer { isFavorite ->
+                if (isFavorite != null) {
+                    binding.layoutDetailHeader.ivFavourite.setImageResource(R.drawable.ic_favourite_on)
+                } else {
+                    binding.layoutDetailHeader.ivFavourite.setImageResource(R.drawable.ic_favourite_off)
+                }
+            },
+        )
+    }
+
+    private fun removeFromFavorite(coinId: String) {
+        viewModel.removeFromFavorite(coinId)
+        checkCoinIsFavorite(coinId)
+    }
+
+    private fun addToFavorite(detail: Detail) {
+        viewModel.addToFavorite(detail).observe(this) {
+            it.proceedWhen(
+                doOnSuccess = {
+                    Toast.makeText(
+                        this,
+                        "Berhasil menambakan ke favorite",
+                        Toast.LENGTH_SHORT,
+                    ).show()
+                },
+                doOnError = {
+                    Toast.makeText(
+                        this,
+                        "Gagal menambakan ke favorite",
+                        Toast.LENGTH_SHORT,
+                    ).show()
+                },
+            )
         }
     }
 

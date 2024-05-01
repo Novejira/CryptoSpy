@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class FavoriteViewModel(private val favoriteRepository: FavoriteRepository) : ViewModel() {
-
     fun getAllFavorite() = favoriteRepository.getAllFavorite().asLiveData(Dispatchers.IO)
 
     fun deleteFavorite(favorite: Favorite) {
