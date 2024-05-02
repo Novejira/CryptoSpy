@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.lifecycle.Observer
 import coil.load
 import com.nafi.cryptospy.R
 import com.nafi.cryptospy.data.model.Detail
@@ -62,9 +61,7 @@ class DetailActivity : AppCompatActivity() {
                     it.payload?.let { data ->
                         bindView(data)
                         setBtnWebClickAction(data.webSlug)
-                        setClickAddFavorite(data, data.id)
-                        checkCoinIsFavorite(data.id)
-                        addToFavorite(data)
+                        checkCoinIsFavorite(data)
                     }
                 },
                 doOnError = {
@@ -79,8 +76,7 @@ class DetailActivity : AppCompatActivity() {
                     binding.layoutState.root.isVisible = true
                     binding.layoutState.pbLoading.isVisible = false
                     binding.layoutState.tvError.isVisible = true
-                    binding.layoutState.tvError.text =
-                        getString(R.string.text_data_empty_or_not_available)
+                    binding.layoutState.tvError.text = getString(R.string.text_data_empty_or_not_available)
                     binding.layoutDetailHeader.root.isVisible = false
                     binding.layoutDetailBottom.btnGoToWeb.isEnabled = false
                 },
@@ -94,35 +90,53 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun setClickAddFavorite(
-        detail: Detail,
-        coinId: String,
-    ) {
+    private fun setClickAddFavorite(detail: Detail) {
         binding.layoutDetailHeader.ivFavourite.setOnClickListener {
-            /*if (checkCoinIsFavorite(coinId)) {
-                removeFromFavorite(coinId)
-            } else {
-                addToFavorite(detail)
-            }*/
+            addToFavorite(detail)
         }
     }
 
-    private fun checkCoinIsFavorite(coinId: String) {
-        viewModel.checkCoinFavorite(coinId).observe(
+    private fun setClickRemoveFavorite(coinId: String) {
+        binding.layoutDetailHeader.ivFavourite.setOnClickListener {
+            removeFromFavorite(coinId)
+        }
+    }
+
+    private fun checkCoinIsFavorite(data: Detail) {
+        viewModel.checkCoinFavorite(data.id).observe(
             this,
-            Observer { isFavorite ->
-                if (isFavorite != null) {
-                    binding.layoutDetailHeader.ivFavourite.setImageResource(R.drawable.ic_favourite_on)
-                } else {
-                    binding.layoutDetailHeader.ivFavourite.setImageResource(R.drawable.ic_favourite_off)
-                }
-            },
-        )
+        ) { isFavorite ->
+            if (isFavorite.isEmpty()) {
+                binding.layoutDetailHeader.ivFavourite.setImageResource(R.drawable.ic_favourite_off)
+                setClickAddFavorite(data)
+                checkCoinIsFavorite(data)
+            } else {
+                binding.layoutDetailHeader.ivFavourite.setImageResource(R.drawable.ic_favourite_on)
+                setClickRemoveFavorite(data.id)
+                checkCoinIsFavorite(data)
+            }
+        }
     }
 
     private fun removeFromFavorite(coinId: String) {
-        viewModel.removeFromFavorite(coinId)
-        checkCoinIsFavorite(coinId)
+        viewModel.removeFromFavorite(coinId).observe(this) {
+            it.proceedWhen(
+                doOnSuccess = {
+                    Toast.makeText(
+                        this,
+                        "Berhasil menghapus ke favorite",
+                        Toast.LENGTH_SHORT,
+                    ).show()
+                },
+                doOnError = {
+                    Toast.makeText(
+                        this,
+                        "Gagal menghapus ke favorite",
+                        Toast.LENGTH_SHORT,
+                    ).show()
+                },
+            )
+        }
     }
 
     private fun addToFavorite(detail: Detail) {
@@ -160,7 +174,6 @@ class DetailActivity : AppCompatActivity() {
             binding.layoutDetailHeader.tvName.text = it.name
             binding.layoutDetailHeader.tvPrice.text = it.price.toString()
             binding.tvDescription.text = it.description
-            checkCoinIsFavorite(detail.id)
         }
     }
 

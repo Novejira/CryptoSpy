@@ -36,5 +36,5 @@ class DetailViewModel(
 
     fun checkCoinFavorite(coinId: String) = favoriteRepository.checkFavoriteById(coinId).asLiveData(Dispatchers.IO)
 
-    fun removeFromFavorite(coinId: String) = favoriteRepository.removeFavorite(coinId)
+    fun removeFromFavorite(coinId: String) = favoriteRepository.removeFavorite(coinId).asLiveData(Dispatchers.IO)
 }

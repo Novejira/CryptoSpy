@@ -43,4 +43,5 @@
     <string name="text_trending_title">Trending Coins</string>
     <string name="text_slogan_crypto">Be a Pioneer in Crypto Investment</string>
     <string name="text_welcome_user">Hi %1$s</string>
+    <string name="text_empty_coin_favorite">Tidak ada coin favorit</string>
 </resources>

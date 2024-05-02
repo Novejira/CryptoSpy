@@ -17,8 +17,6 @@ import kotlinx.coroutines.flow.onStart
 interface FavoriteRepository {
     fun getAllFavorite(): Flow<ResultWrapper<List<Favorite>>>
 
-    suspend fun addFavorite(favorite: Favorite): Long
-
     fun checkFavoriteById(coinId: String): Flow<List<FavoriteEntity>>
 
     fun addFavorite(detail: Detail): Flow<ResultWrapper<Boolean>>
@@ -47,10 +45,6 @@ class FavoriteRepositoryImpl(private val datasource: FavoriteDataSource) : Favor
             }
     }
 
-    override suspend fun addFavorite(favorite: Favorite): Long {
-        TODO("Not yet implemented")
-    }
-
     override fun checkFavoriteById(coinId: String): Flow<List<FavoriteEntity>> {
         return datasource.checkFavoriteById(coinId)
     }
@@ -67,7 +61,6 @@ class FavoriteRepositoryImpl(private val datasource: FavoriteDataSource) : Favor
                             coinName = detail.name,
                         ),
                     )
-                delay(2000)
                 affectedRow > 0
             }
         }

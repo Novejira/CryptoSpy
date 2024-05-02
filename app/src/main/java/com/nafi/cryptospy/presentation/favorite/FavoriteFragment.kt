@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.nafi.cryptospy.R
 import com.nafi.cryptospy.data.model.Favorite
 import com.nafi.cryptospy.databinding.FragmentFavoriteBinding
 import com.nafi.cryptospy.presentation.common.adapter.FavoriteListAdapter
@@ -79,6 +80,8 @@ class FavoriteFragment : Fragment() {
                     binding.layoutStateFavorite.root.isVisible = true
                     binding.layoutStateFavorite.pbLoading.isVisible = false
                     binding.layoutStateFavorite.tvError.isVisible = true
+                    binding.layoutStateFavorite.tvError.text =
+                        getString(R.string.text_empty_coin_favorite)
                     binding.rvFavorite.isVisible = false
                     result.payload?.let {
                         adapter.submitData(it)
@@ -94,7 +97,7 @@ class FavoriteFragment : Fragment() {
         }
     }
 
-    private fun navigateToDetail(coinId: String)  {
+    private fun navigateToDetail(coinId: String) {
         DetailActivity.startActivity(requireContext(), coinId)
     }
 }
