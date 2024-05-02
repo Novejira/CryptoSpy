@@ -5,10 +5,10 @@ import com.nafi.cryptospy.data.mapper.toFavoriteEntity
 import com.nafi.cryptospy.data.mapper.toFavoriteList
 import com.nafi.cryptospy.data.model.Detail
 import com.nafi.cryptospy.data.model.Favorite
+import com.nafi.cryptospy.data.source.local.entity.FavoriteEntity
 import com.nafi.cryptospy.utils.ResultWrapper
 import com.nafi.cryptospy.utils.proceed
 import com.nafi.cryptospy.utils.proceedFlow
-import com.nafi.cryptospy.data.source.local.entity.FavoriteEntity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

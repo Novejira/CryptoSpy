@@ -146,45 +146,6 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkCoinIsFavorite(coinId: String) {
-        viewModel.checkCoinFavorite(coinId).observe(
-            this,
-            Observer { isFavorite ->
-                if (isFavorite != null) {
-                    binding.layoutDetailHeader.ivFavourite.setImageResource(R.drawable.ic_favourite_on)
-                } else {
-                    binding.layoutDetailHeader.ivFavourite.setImageResource(R.drawable.ic_favourite_off)
-                }
-            },
-        )
-    }
-
-    private fun removeFromFavorite(coinId: String) {
-        viewModel.removeFromFavorite(coinId)
-        checkCoinIsFavorite(coinId)
-    }
-
-    private fun addToFavorite(detail: Detail) {
-        viewModel.addToFavorite(detail).observe(this) {
-            it.proceedWhen(
-                doOnSuccess = {
-                    Toast.makeText(
-                        this,
-                        "Berhasil menambakan ke favorite",
-                        Toast.LENGTH_SHORT,
-                    ).show()
-                },
-                doOnError = {
-                    Toast.makeText(
-                        this,
-                        "Gagal menambakan ke favorite",
-                        Toast.LENGTH_SHORT,
-                    ).show()
-                },
-            )
-        }
-    }
-
     private fun setBtnWebClickAction(webSlug: String) {
         binding.layoutDetailBottom.btnGoToWeb.setOnClickListener {
             goToWeb(webSlug)

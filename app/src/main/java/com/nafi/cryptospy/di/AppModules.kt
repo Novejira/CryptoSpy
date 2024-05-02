@@ -5,10 +5,10 @@ import com.nafi.cryptospy.data.datasource.DetailApiDataSource
 import com.nafi.cryptospy.data.datasource.DetailDataSource
 import com.nafi.cryptospy.data.datasource.coin.CoinApiDataSource
 import com.nafi.cryptospy.data.datasource.coin.CoinDataSource
-import com.nafi.cryptospy.data.repository.CoinRepository
-import com.nafi.cryptospy.data.repository.CoinRepositoryImpl
 import com.nafi.cryptospy.data.datasource.favorite.FavoriteDataSource
 import com.nafi.cryptospy.data.datasource.favorite.FavoriteDataSourceImpl
+import com.nafi.cryptospy.data.repository.CoinRepository
+import com.nafi.cryptospy.data.repository.CoinRepositoryImpl
 import com.nafi.cryptospy.data.repository.DetailRepository
 import com.nafi.cryptospy.data.repository.DetailRepositoryImpl
 import com.nafi.cryptospy.data.repository.FavoriteRepository
@@ -22,6 +22,7 @@ import com.nafi.cryptospy.data.source.local.dao.FavoriteDao
 import com.nafi.cryptospy.data.source.network.service.CryptoSpyApiService
 import com.nafi.cryptospy.presentation.detail.DetailViewModel
 import com.nafi.cryptospy.presentation.favorite.FavoriteViewModel
+import com.nafi.cryptospy.presentation.home.HomeViewModel
 import com.nafi.cryptospy.presentation.login.LoginViewModel
 import com.nafi.cryptospy.presentation.profile.ProfileViewModel
 import com.nafi.cryptospy.presentation.register.RegisterViewModel
@@ -54,7 +55,7 @@ object AppModules {
             single<FirebaseAuthDataSource> { FirebaseAuthDataSourceImpl(get()) }
             single<DetailDataSource> { DetailApiDataSource(get()) }
             single<FavoriteDataSource> { FavoriteDataSourceImpl(get()) }
-            single<FavoriteDataSource>{ FavoriteDataSourceImpl(get()) }
+            single<FavoriteDataSource> { FavoriteDataSourceImpl(get()) }
         }
 
     private val repository =
@@ -69,6 +70,9 @@ object AppModules {
         module {
             viewModel {
                 SplashViewModel(get())
+            }
+            viewModel {
+                HomeViewModel(get(), get())
             }
             viewModel {
                 RegisterViewModel(get())

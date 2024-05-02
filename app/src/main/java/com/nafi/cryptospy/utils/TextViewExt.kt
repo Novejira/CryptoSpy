@@ -8,7 +8,6 @@ import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
 
-
 fun TextView.highLightWord(
     word: String,
     onClick: () -> Unit,

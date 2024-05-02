@@ -12,4 +12,3 @@ fun DetailResponse?.toDetail() =
         image = this?.image?.large.orEmpty(),
         price = this?.marketData?.currentPrice?.usd ?: 0.0,
     )
-

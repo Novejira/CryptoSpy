@@ -11,7 +11,6 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.Fragment
 
-
 val Number.toPx
     get() =
         TypedValue.applyDimension(
