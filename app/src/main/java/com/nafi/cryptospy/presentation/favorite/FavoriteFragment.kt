@@ -10,6 +10,7 @@ import com.nafi.cryptospy.data.model.Favorite
 import com.nafi.cryptospy.databinding.FragmentFavoriteBinding
 import com.nafi.cryptospy.presentation.common.adapter.FavoriteListAdapter
 import com.nafi.cryptospy.presentation.common.adapter.FavoriteListener
+import com.nafi.cryptospy.presentation.detail.DetailActivity
 import com.nafi.cryptospy.utils.proceedWhen
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -23,6 +24,12 @@ class FavoriteFragment : Fragment() {
             object : FavoriteListener {
                 override fun onDeleteFavoriteClicked(favorite: Favorite) {
                     viewModel.deleteFavorite(favorite)
+                }
+
+                override fun onItemClicked(coinId: String?) {
+                    if (coinId != null) {
+                        navigateToDetail(coinId)
+                    }
                 }
             },
         )
@@ -85,5 +92,9 @@ class FavoriteFragment : Fragment() {
                 },
             )
         }
+    }
+
+    private fun navigateToDetail(coinId: String)  {
+        DetailActivity.startActivity(requireContext(), coinId)
     }
 }

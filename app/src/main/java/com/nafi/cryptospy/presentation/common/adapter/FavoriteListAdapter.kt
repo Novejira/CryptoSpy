@@ -13,6 +13,8 @@ import com.nafi.cryptospy.databinding.ItemFavoriteBinding
 
 interface FavoriteListener {
     fun onDeleteFavoriteClicked(favorite: Favorite)
+
+    fun onItemClicked(coinId: String?)
 }
 
 class FavoriteListAdapter(private val favoriteListener: FavoriteListener? = null) :
@@ -98,6 +100,7 @@ class FavoriteViewHolder(
     private fun setClickListener(data: Favorite) {
         with(binding) {
             tvDelete.setOnClickListener { favoriteListener?.onDeleteFavoriteClicked(data) }
+            itemView.setOnClickListener { favoriteListener?.onItemClicked(data.coinId) }
         }
     }
 }
