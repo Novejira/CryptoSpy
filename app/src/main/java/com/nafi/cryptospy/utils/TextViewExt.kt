@@ -8,10 +8,7 @@ import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
 
-/**
-Written with love by Muhammad Hermas Yuda Pamungkas
-Github : https://github.com/hermasyp
- **/
+
 fun TextView.highLightWord(
     word: String,
     onClick: () -> Unit,

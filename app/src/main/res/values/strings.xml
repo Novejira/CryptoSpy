@@ -35,4 +35,7 @@
     <string name="text_want_to_logout">Do you want to logout ?</string>
     <string name="text_open_in_coingecko">Open In CoinGecko</string>
     <string name="text_data_empty_or_not_available">data empty or not available</string>
+    <string name="text_trending_title">Trending Coins</string>
+    <string name="text_slogan_crypto">Be a Pioneer in Crypto Investment</string>
+    <string name="text_welcome_user">Hi %1$s</string>
 </resources>
