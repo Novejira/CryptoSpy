@@ -1,6 +1,7 @@
 package com.nafi.cryptospy.data.source.network.service
 
 import com.nafi.cryptospy.BuildConfig
+import com.nafi.cryptospy.data.source.network.model.coin.CoinListResponse
 import com.nafi.cryptospy.data.source.network.model.detail.DetailResponse
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -16,6 +17,14 @@ interface CryptoSpyApiService {
         "Accept: application/json",
         "x-cg-api-key: ${BuildConfig.API_KEY}",
     )
+    @GET("markets")
+    suspend fun getCoins(
+        @Query("vs_currency") vsCurrency: String = "usd",
+        @Query("precision") precision: Int = 2,
+        @Query("sparkline") sparkLine: Boolean = false,
+        @Query("per_page") perPage: Int = 20,
+    ): List<CoinListResponse>
+
     @GET("{id}")
     suspend fun getDetail(
         @Path("id") id: String,

@@ -13,7 +13,3 @@ fun DetailResponse?.toDetail() =
         price = this?.marketData?.currentPrice?.usd ?: 0.0,
     )
 
-fun Collection<DetailResponse>?.toCatalogs() =
-    this?.map {
-        it.toDetail()
-    }
