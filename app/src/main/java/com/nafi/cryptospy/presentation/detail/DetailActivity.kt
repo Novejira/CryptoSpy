@@ -62,9 +62,6 @@ class DetailActivity : AppCompatActivity() {
                     it.payload?.let { data ->
                         bindView(data)
                         setBtnWebClickAction(data.webSlug)
-                        setClickAddFavorite(data, data.id)
-                        checkCoinIsFavorite(data.id)
-                        addToFavorite(data)
                     }
                 },
                 doOnError = {
@@ -91,19 +88,6 @@ class DetailActivity : AppCompatActivity() {
     private fun setClickAction() {
         binding.cardBackArrow.setOnClickListener {
             onBackPressed()
-        }
-    }
-
-    private fun setClickAddFavorite(
-        detail: Detail,
-        coinId: String,
-    ) {
-        binding.layoutDetailHeader.ivFavourite.setOnClickListener {
-            /*if (checkCoinIsFavorite(coinId)) {
-                removeFromFavorite(coinId)
-            } else {
-                addToFavorite(detail)
-            }*/
         }
     }
 
@@ -160,6 +144,7 @@ class DetailActivity : AppCompatActivity() {
             binding.layoutDetailHeader.tvName.text = it.name
             binding.layoutDetailHeader.tvPrice.text = it.price.toString()
             binding.tvDescription.text = it.description
+            checkCoinIsFavorite(detail.id)
         }
     }
 

@@ -42,8 +42,8 @@ class FavoriteFragment : Fragment() {
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
-        observeData()
         setList()
+        observeData()
     }
 
     private fun setList() {
