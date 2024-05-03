@@ -82,4 +82,5 @@ class HomeFragment : Fragment() {
     private fun bindCoinList(data: List<Coin>) {
         coinAdapter.submitData(data)
     }
+
 }
